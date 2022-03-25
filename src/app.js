@@ -1,198 +1,114 @@
-//Progression 1 - create a Manager array and return it
-let managerName = "Alex Ferguson";
-let managerAge = 78;
-let currentTeam = "Manchester FC";
-let trophiesWon = 27;
-
-//Write your function here
-createManager=(managerName, managerAge, currentTeam, trophiesWon)=>{
-const manager=[
-  managerName,managerAge,currentTeam,trophiesWon
-];
-  return(manager);
-}
-
-// Don't edit the following code
-try {
-  var manager = createManager(
-    managerName,
-    managerAge,
-    currentTeam,
-    trophiesWon
-  );
-} catch (e) {
-  // do nothing - expected error
-}
-
-//Progression 2 - create a formation object and return it
-var formation = [4, 4, 3];
-
-//write your function here
-createFormation=(formation)=>{
-  if(formation.length==0){
-    return(null);
+//Progression 1:
+//We've got some basic info about Karen's home
+//Debug the type of data provided
+//Return the types concatenated in a single variable
+const moreAboutHome = (address, distanceFromTown, hasNeighbours) => {
+    let a = typeof address
+    let b = typeof distanceFromTown
+    let c = typeof hasNeighbours
+    return a + b + c
   }
-  else{
-  var formation={
-    defender:formation[0],
-     midfield:formation[1],
-      forward:formation[2]
-};
-  return(formation);
-}
-}
-// Dont edit the following code
-
-try {
-  var formationObject = createFormation(formation);
-} catch (e) {
-  //do nothing
-}
-
-//Progression 3 - Filter players that debuted in ___ year
-function filterByDebut(year){
-  var arr =[];
-
-  for(var i=0;i<players.length;i++){
-     if(players[i].debut == year){
-      arr.push(players[i])
+  
+  //Progression 2:
+  //Check if the data given is of the right type
+  //parents = String, noOfSiblings = Number, isNuclearFamily = Boolean
+  const moreAboutKaren = (parents, noOfSiblings, isNuclearFamily) => {
+    //     // if (typeof parents, noOfSiblings, isNuclearFamily == 'string', 'number', 'boolean')
+    //     //     return true;
+    //     // else
+    //     //     return false;
+    if (
+      typeof parents == "string" &&
+      typeof noOfSiblings == "number" &&
+      typeof isNuclearFamily == "boolean"
+    ) {
+      return true
+    } else {
+      return false
     }
   }
-  return arr;
-}
-
-//Progression 4 - Filter players that play at the position _______
-function filterByPosition(position){
-  var arr =[];
-
-  for(var i=0;i<players.length;i++){
-    if(players[i].position == position){
-      arr.push(players[i]);
+  
+  //Progression 3:
+  //Lily is suspicious about Karen's new friend
+  //Karen tells her friend's age and even writes it down
+  //Check which one those is not a number (NaN) and return that value
+  const doesFriendExist = (ageInText, ageInNumber) => {
+    if (isNaN(ageInText) == true) {
+      return ageInText
+    }
+    if (isNaN(ageInNumber) == true) {
+      return ageInNumber
     }
   }
-  return arr;
-}
-
-//Progression 5 - Filter players that have won ______ award
-function filterByAward(awardName){
-   var arr =[];
-
-   for(var i=0;i<players.length;i++){
-     for(var j=0;j<players[i].awards.length;j++){
-        if(players[i].awards[j].name == awardName){
-        arr.push(players[i]);
-     }
-   }
+  
+  //Progression 4:
+  //Lily gave Karen x sweets
+  //Karen ate y sweets herself
+  //On her way to the river, she ate another z sweets every n meters travelled
+  //Her friend divided the remaining sweets into 2 parts for each
+  //How many sweets did her friend get to eat?
+  const sweetTooth = (
+    totalNoOfSweets,
+    sweetsConsumedByKaren,
+    sweetsConsumedInNMeters,
+    metersToTravel
+  ) => {
+    var sweetsShared = 0
+    if (
+      typeof totalNoOfSweets != "number" ||
+      typeof sweetsConsumedByKaren != "number" ||
+      typeof sweetsConsumedInNMeters != "number" ||
+      typeof metersToTravel != "number"
+    ) {
+      return "No sweets for Karen's friend"
+    } else if (totalNoOfSweets)
+      sweetsShared =
+        (totalNoOfSweets -
+          (sweetsConsumedByKaren + sweetsConsumedInNMeters * metersToTravel)) /
+        2
+  
+    return sweetsShared
   }
-   return arr;
-}
-
-//Progression 6 - Filter players that won ______ award ____ times
-function filterByAwardxTimes(awardName,noOfTimes){
-  var arr =[];
-
-  for(var i=0;i<players.length;i++){
-    var count =0;
-    for(var j=0;j<players[i].awards.length;j++){
-      if(players[i].awards[j].name == awardName){
-        count++;
-          if(count == noOfTimes){
-         if(noOfTimes == 2){
-         arr.push(players[i])
-         }
-        }
-      }
+  
+  //Progression 5:
+  //As Lily moves closer, it gets colder. She checks the temperature on her mobile
+  //It only shows in fahrenheit. Convert the data to celsius and return it.
+  const convertToCelsius = (fahrenheit) => {
+    var result = 0
+    if (typeof fahrenheit !== "number") result = "Technical Error!"
+    else result = ((fahrenheit - 32) * 5) / 9
+    return result
+  }
+  
+  //Progression 6:
+  //Lily can now do multiple things to deal with this
+  //1. Take her daughter to a doctor
+  //2. Talk to her husband about it
+  //3. Counsel her daughter herself
+  //4. Lock her daughter in her room
+  //Given a value, return which of these above actions Lily would take
+  const aDifficultChoice = (choice) => {
+    if (choice == 1) {
+      return "Take her daughter to a doctor"
+    } else if (choice == -1) {
+      return "Break down and give up all hope"
+    } else if (choice == "I give up") {
+      return "Refused to do anything for Karen"
+    } else {
+      return "Wasn't able to decide"
     }
   }
-  return arr;
-}
-
-
-//Progression 7 - Filter players that won ______ award and belong to ______ country
-function filterByAwardxCountry(awardName,country){
-  var arr =[];
-
-  for(var i=0;i<players.length;i++) {
-    if(players[i].country == country){
-      for(var j=0;j<players[i].awards.length;j++) {
-        if(players[i].awards[j].name == awardName) {
-          arr.push(players[i]);
-        }
-      }
-    }
+  
+  //Progression 7:
+  //Lily realized that she'd hurt her daughter
+  //All she wants now is for her to stop crying
+  //She refuses to talk to her but Lily doesn't stop trying
+  //She tries out multiple things hoping for the best
+  //Take all of Lily's strategies and concatenate them to a single var
+  //Seperate the strategies by a single space
+  //Return the length of the complete strategy
+  const consoleKaren = (strategies) => {
+    var result = 0
+    result = strategies.reduce(a + b)
+    return result
   }
-  return arr;
-}
-
-//Progression 8 - Filter players that won atleast ______ awards, belong to ______ team and are younger than ____
-function filterByNoOfAwardsxTeamxAge(noOfAwards,team,age) {
-  var arr =[];
-
-  for(var i=0;i<players.length;i++){
-    if((players[i].team == team) && (players[i].age < age) && (players[i].awards.length >= noOfAwards)) {
-          arr.push(players[i]);
-        }
-      }
-  return arr;
-}
-
-//Progression 9 - Sort players in descending order of their age
-function SortByAge() {
-  var arr =[];
-
-  for(var i=0;i<players.length;i++) {
-    for(var j=i+i;j<players.length;j++) {
-      if(players[i] < players[j]){
-        arr = players[i];
-        players[i] = players[j];
-        players[j] = arr;
-      }
-    }
-  }
-  return players;
-}
-
-//Progression 10 - Sort players beloging to _____ team in descending order of awards won
-function FilterByTeamxSortByNoOfAwards(team){
-  var arr =[];
-  var output =[];
- 
-  for(var i=0;i<players.length;i++) {
-    if(players[i].team == team){
-      arr.push(players[i]);
-    }
-  }
-   for(var i=0;i<arr.length;i++){
-     for(var j=i+1;j<arr.length;j++){
-       if(arr[i].awards.length < arr[j].awards.length){
-         output = arr[i];
-         arr[i] = arr[j];
-         arr[j] = output;
-       }
-     }
-   }
-  return arr;
-}
-
-//Challenge 1 - Sort players that have won _______ award _____ times and belong to _______ country in alphabetical order of their names
-function SortByNamexAwardxTimes(awardName,noOfTimes,country){
-  var arr =[];
-
-  for(var i=0;i<players.length;i++){
-    var count =0;
-    if(players[i].country == country){
-      for(var j=0;j<players[i].awards.length;j++){
-        if(players[i].awards[j].name == awardName){
-          count++;
-          if(count == noOfTimes){
-            arr.push(players[i]);
-          }
-        }
-      }
-    }
-  }
-  return arr;
-}
-
-//Challenge 2 - Sort players that are older than _____ years in alphabetical order
-//Sort the awards won by them in reverse chronological order
